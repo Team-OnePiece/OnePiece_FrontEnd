@@ -1,0 +1,8 @@
+{
+  "name": "OnePiece_FrontEnd",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Team-OnePiece/OnePiece_FrontEnd.git",
+  "author": "은지 <yeochinlebelomgeole@gmail.com>",
+  "license": "MIT"
+}
