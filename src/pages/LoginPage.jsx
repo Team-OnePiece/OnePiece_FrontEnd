@@ -39,6 +39,13 @@ const LoginPage = () => {
         ))}
         <ErrorText>비밀번호 또는 아이디 확인하세요.</ErrorText>
       </InputContainer>
+      <WrapperNextButton>
+        <NextButton>다음</NextButton>
+      </WrapperNextButton>
+      <Signup>
+        <NoMember>아직 회원이 아니신가요?</NoMember>
+        <SignupButton>회원가입</SignupButton>
+      </Signup>
     </Container>
   );
 };
@@ -50,7 +57,7 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 30px;
+  gap: 40px;
   flex-direction: column;
 
   > img {
@@ -82,6 +89,39 @@ const ErrorText = styled.span`
   font-weight: 400;
   line-height: normal;
   color: red;
+`;
+
+const WrapperNextButton = styled.div`
+  //padding-top: 100px;
+  width: 600px;
+  height: 10px;
+  //position: relative;
+`;
+const NextButton = styled.button`
+  font-size: 20px;
+  width: 600px;
+  height: 60px;
+  border: none;
+  background-color: rgb(64, 68, 60);
+  border-radius: 10px;
+  color: white;
+`;
+
+const NoMember = styled.span`
+  font-size: 15px;
+`;
+
+const SignupButton = styled.button`
+  font-size: 15px;
+  color: red;
+  background: none;
+  border: none;
+`;
+
+const Signup = styled.div`
+  display: flex;
+  align-items: center;
+  padding-top: 20px;
 `;
 
 export default LoginPage;
