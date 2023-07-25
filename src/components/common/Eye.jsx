@@ -4,7 +4,7 @@ import { styled } from "styled-components";
 const Eye = ({ isShowPassword, onClick }) => {
   return (
     <EyeContainer onClick={onClick}>
-      {isShowPassword ? <FaEyeSlash /> : <FaEye />}
+      {isShowPassword ? <FaEye /> : <FaEyeSlash />}
     </EyeContainer>
   );
 };
