@@ -1,13 +1,15 @@
 import { styled } from "styled-components";
 import { Logo } from "../assets";
 import { useState, useRef } from "react";
-import React, { Component } from "react";
+import React from "react";
 
 const MyPage = () => {
   const [Image, setImage] = useState(
     "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
   );
   const fileInput = useRef(null);
+  const myId = "내 예전 아이디";
+
   const onChange = (e) => {
     if (e.target.files[0]) {
       setImage(e.target.files[0]);
@@ -27,20 +29,22 @@ const MyPage = () => {
     };
     reader.readAsDataURL(e.target.files[0]);
   };
+
   return (
     <Container>
       <LogoContainer>
         <img src={Logo} alt="로고" />
       </LogoContainer>
+      <Txt>OO님, 오늘은 어떤 하루를 보냈나요?</Txt>
       <AvatarContainer>
-        <Avatar
-          src={Image}
-          style={{ margin: "20px" }}
-          size={200}
+        <Avatar src={Image} size={200} />
+        <p
           onClick={() => {
             fileInput.current.click();
           }}
-        />
+        >
+          작성하기
+        </p>
         <input
           type="file"
           style={{ display: "none" }}
@@ -50,18 +54,14 @@ const MyPage = () => {
           ref={fileInput}
         />
       </AvatarContainer>
+      <IdContainer>
+        <input type="text" placeholder={myId} />
+        <CheckBtn>중복확인</CheckBtn>
+      </IdContainer>
       <BottomBtnContainer>
         <CancelBtn>취소하기</CancelBtn>
         <CompleteBtn>완료</CompleteBtn>
       </BottomBtnContainer>
-      <IdContainer>
-        <IdLabel />
-        <input type="text" />
-        <CheckBtn>중복확인</CheckBtn>
-      </IdContainer>
-      <TxtContainer>
-        <Txt>OO님, 오늘은 어떤 하루를 보냈나요?</Txt>
-      </TxtContainer>
     </Container>
   );
 };
@@ -70,6 +70,9 @@ const Container = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: ${({ theme }) => theme.colors.gray0};
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
 `;
 
 const LogoContainer = styled.div`
@@ -82,27 +85,30 @@ const LogoContainer = styled.div`
   }
 `;
 
-const Avatar = styled.button`
+const Avatar = styled.img`
   width: 200px;
   height: 200px;
   border: none;
   border-radius: 50%;
   align-content: center;
+  margin: 20px;
 `;
 
 const AvatarContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin-left: 600px;
-  margin-top: 125px;
+  align-items: center;
+  justify-content: center;
+  > p {
+    color: ${({ theme }) => theme.colors.gray500};
+  }
 `;
 
 const CancelBtn = styled.button`
-  margin-right: 100px;
   border-radius: 8px;
   width: 300px;
   border: 1px;
-  height: 40px;
+  height: 50px;
   border-color: black;
 `;
 
@@ -113,29 +119,36 @@ const CompleteBtn = styled.button`
   border-radius: 8px;
   border: 1px;
   width: 300px;
-  height: 40px;
+  height: 50px;
 `;
 
 const BottomBtnContainer = styled.div`
-  margin-left: 390px;
-  margin-top: 340px;
-`;
-
-const TxtContainer = styled.div`
-  margin-left: 600px;
-  margin-top: 0px;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
 `;
 
-const Txt = styled.span``;
+const Txt = styled.p`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 const IdContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  margin-left: 1000px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  > input {
+    width: 340px;
+    height: 40px;
+    border-radius: 0.625rem;
+    border: 1px solid ${({ theme }) => theme.gray400};
+    outline: none;
+    padding: 0 20px;
+  }
 `;
-
-const IdLabel = styled.label``;
 
 const CheckBtn = styled.button`
   width: 100px;
