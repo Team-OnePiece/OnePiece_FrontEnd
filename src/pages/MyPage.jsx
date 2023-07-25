@@ -1,21 +1,30 @@
-/*import { styled } from "styled-components";
+import { styled } from "styled-components";
 import { Logo } from "../assets";
 import { useState, useRef } from "react";
+import React from "react";
 
 const MyPage = () => {
-  const [profileImage, setProfileImage] = useState(user.profile_image);
-  const profileImgFileInput = useRef(null);
-  const profileChange = (e) => {
+  const [Image, setImage] = useState(
+    "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+  );
+  const fileInput = useRef(null);
+  const myId = "내 예전 아이디";
+
+  const onChange = (e) => {
     if (e.target.files[0]) {
-      setProfileFiles(e.target.files[0]);
+      setImage(e.target.files[0]);
     } else {
-      setProfileImage(user.profileImg);
+      //업로드 취소할 시
+      setImage(
+        "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+      );
       return;
     }
+    //화면에 프로필 사진 표시
     const reader = new FileReader();
     reader.onload = () => {
       if (reader.readyState === 2) {
-        setProfileImage(reader.result);
+        setImage(reader.result);
       }
     };
     reader.readAsDataURL(e.target.files[0]);
@@ -26,24 +35,33 @@ const MyPage = () => {
       <LogoContainer>
         <img src={Logo} alt="로고" />
       </LogoContainer>
-      <ImgContainer>
-        <img
-          className="profileImageEditCamera2"
-          src="images/Twitter_files/profile_icons/camera.png"
-          alt="이미지 수정"
+      <Txt>OO님, 오늘은 어떤 하루를 보냈나요?</Txt>
+      <AvatarContainer>
+        <Avatar src={Image} size={200} />
+        <p
           onClick={() => {
-            profileImgFileInput.current.click();
+            fileInput.current.click();
           }}
-        />
+        >
+          작성하기
+        </p>
         <input
-          className="fileUploader2"
           type="file"
-          accept="image/*"
-          onChange={profileChange}
-          ref={profileImgFileInput}
+          style={{ display: "none" }}
+          accept="image/jpg,image/png,image/jpeg"
           name="profile_img"
+          onChange={onChange}
+          ref={fileInput}
         />
-      </ImgContainer>
+      </AvatarContainer>
+      <IdContainer>
+        <input type="text" placeholder={myId} />
+        <CheckBtn>중복확인</CheckBtn>
+      </IdContainer>
+      <BottomBtnContainer>
+        <CancelBtn>취소하기</CancelBtn>
+        <CompleteBtn>완료</CompleteBtn>
+      </BottomBtnContainer>
     </Container>
   );
 };
@@ -53,48 +71,92 @@ const Container = styled.div`
   height: 100vh;
   background-color: ${({ theme }) => theme.colors.gray0};
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 40px;
   flex-direction: column;
-`;
-
-const Img = styled.img`
-  width: 1000px;
-  margin-top: 400px;
+  gap: 50px;
 `;
 
 const LogoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
   > img {
     width: 250px;
-    margin-bottom: 700px;
-    margin-right: 1200px;
+    margin-top: 11px;
+    margin-left: 12px;
   }
 `;
 
-const ImgContainer = styled.div`
-  > img {
-    padding-bottom: 0px;
+const Avatar = styled.img`
+  width: 200px;
+  height: 200px;
+  border: none;
+  border-radius: 50%;
+  align-content: center;
+  margin: 20px;
+`;
+
+const AvatarContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  > p {
+    color: ${({ theme }) => theme.colors.gray500};
   }
+`;
+
+const CancelBtn = styled.button`
+  border-radius: 8px;
+  width: 300px;
+  border: 1px;
+  height: 50px;
+  border-color: black;
+`;
+
+const CompleteBtn = styled.button`
+  border-color: #50574b;
+  background-color: #50574b;
+  color: white;
+  border-radius: 8px;
+  border: 1px;
+  width: 300px;
+  height: 50px;
+`;
+
+const BottomBtnContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+`;
+
+const Txt = styled.p`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const IdContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  > input {
+    width: 340px;
+    height: 40px;
+    border-radius: 0.625rem;
+    border: 1px solid ${({ theme }) => theme.gray400};
+    outline: none;
+    padding: 0 20px;
+  }
+`;
+
+const CheckBtn = styled.button`
+  width: 100px;
+  height: 40px;
+  background-color: #50574b;
+  border-radius: 10px;
+  color: white;
+  border: none;
 `;
 
 export default MyPage;
-
-const user = styled.div``;
-const setProfileFiles = styled.div``;
-*/
-
-import { styled } from "styled-components";
-import { Logo } from "../assets";
-import { useState, useRef } from "react";
-
-const Mypage () => {
-  const [Image, setImage] = useState("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png")
-const fileInput = useRef(null)
-
-<Avatar 
-        src={Image} 
-        style={{margin:'20px'}} 
-        size={200} 
-        onClick={()=>{fileInput.current.click()}}/>
-};
