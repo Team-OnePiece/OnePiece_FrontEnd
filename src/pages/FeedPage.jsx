@@ -168,23 +168,7 @@ const UploadContainer = styled.div`
   }
 `;
 
-// const Input = styled.input`
-//   width: 550px;
-//   height: 50px;
-//   border-radius: 10px;
-//   outline: none;
-//   border: 1px solid ${({ theme }) => theme.gray400};
-//   font-size: 20px;
-//   border-color: rgb(239, 204, 202);
-//   padding-left: 10px;
-// `;
-
 const InputContainer = styled.div`
-  /* padding-left: 475px;
-  padding-top: 30px;
-  > p {
-    padding-left: 500px;
-  } */
   position: relative;
   > p {
     position: absolute;
@@ -192,27 +176,6 @@ const InputContainer = styled.div`
     right: 10px;
     color: ${({ theme }) => theme.gray600};
   }
-`;
-
-const Txt = styled.text`
-  /* color: red;
-  margin-left: 0px;
-  margin-bottom: 100px; */
-`;
-
-const PlusBtnContainer = styled.div`
-  /* padding-left: 0px;
-  padding-top: 20px;
-  > button {
-    width: 90px;
-    height: 60px;
-    border-radius: 24px;
-    border: 1px solid;
-    border-color: rgb(239, 204, 202);
-    color: black;
-    font-size: 20px;
-    background-color: white;
-  } */
 `;
 
 const Group = styled.button`
@@ -226,18 +189,7 @@ const Group = styled.button`
   background-color: white;
 `;
 
-const UploadTxt = styled.text`
-  /* padding-left: 475px;
-  padding-top: 100px; */
-`;
-
 const BottomBtnContainer = styled.div`
-  /* display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 100px;
-  padding-top: 70px;
-  gap: 60px; */
   display: flex;
   justify-content: space-between;
 `;
@@ -261,17 +213,6 @@ const UploadBtn = styled.button`
   height: 50px;
   border-radius: 8px;
   font-size: 20px;
-`;
-
-const LocateMypage = styled.div`
-  /* padding-left: 50px;
-  padding-bottom: 0px;
-  > button {
-    color: gray;
-    font-size: 20px;
-    background: none;
-    border: none;
-  } */
 `;
 
 export default FeedPage;
