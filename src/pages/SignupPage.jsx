@@ -12,6 +12,22 @@ const SignupPage = () => {
     }
   };
 
+  const [input, setInput] = useState({
+    grade: "",
+    classNumber: "",
+    studentNumber: "",
+  });
+
+  const { grade, classNumber, studentNumber } = input;
+
+  const onChange = (e) => {
+    const { value, id } = e.target;
+    setInput({
+      ...input,
+      [id]: value,
+    });
+  };
+
   return (
     <Container>
       <img src={Logo} alt="로고" />
@@ -27,9 +43,24 @@ const SignupPage = () => {
           <Circle active={activeStep === 4}>4</Circle>
         </Step>
         <InputContainer1>
-          <input id="grade" placeholder="학년" />
-          <input id="class" placeholder="반" />
-          <input id="number" placeholder="번호" />
+          <input
+            id="grade"
+            placeholder="학년"
+            onChange={onChange}
+            value={grade}
+          />
+          <input
+            id="classNumber"
+            placeholder="반"
+            onChange={onChange}
+            value={classNumber}
+          />
+          <input
+            id="studentNumber"
+            placeholder="번호"
+            onChange={onChange}
+            value={studentNumber}
+          />
         </InputContainer1>
         {activeStep >= 2 && (
           <NickName>
@@ -49,7 +80,12 @@ const SignupPage = () => {
             <PasswordInput></PasswordInput>
           </Password>
         )}
-        <NextButton onClick={nextStep}>다음</NextButton>
+        <NextButton
+          onClick={nextStep}
+          disabled={!(grade && classNumber && studentNumber)}
+        >
+          다음
+        </NextButton>
       </Wrapper>
     </Container>
   );
@@ -154,14 +190,20 @@ const Wrapper = styled.div`
 `;
 
 const NextButton = styled.button`
+  cursor: pointer;
   font-size: 20px;
   width: 700px;
   height: 80px;
   border: none;
-  background-color: ${({ theme }) => theme.colors.MAIN5};
+  background-color: ${({ theme }) => theme.colors.MAIN1};
   color: white;
   border-radius: 10px;
   font-size: 28px;
+
+  &:disabled {
+    cursor: no-drop;
+    background-color: ${({ theme }) => theme.colors.MAIN5};
+  }
 `;
 
 const InputContainer1 = styled.div`
