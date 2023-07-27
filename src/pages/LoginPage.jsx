@@ -4,6 +4,8 @@ import Input from "../components/common/Input";
 import Eye from "../components/common/Eye";
 import { useState } from "react";
 import { LoginInputData } from "../constants/login";
+import Button from "../components/common/Button";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
   const [isOpenEye, setIsOpenEye] = useState(false);
@@ -11,6 +13,7 @@ const LoginPage = () => {
   const eyeClickHandle = () => {
     setIsOpenEye(!isOpenEye);
   };
+  const navigate = useNavigate();
 
   return (
     <Container>
@@ -39,13 +42,11 @@ const LoginPage = () => {
         ))}
         <ErrorText>비밀번호 또는 아이디 확인하세요.</ErrorText>
       </InputContainer>
-      <WrapperNextButton>
-        <NextButton>다음</NextButton>
-      </WrapperNextButton>
-      <Signup>
-        <NoMember>아직 회원이 아니신가요?</NoMember>
-        <SignupButton>회원가입</SignupButton>
-      </Signup>
+      <Button text="로그인하기" />
+      <GoSignup>
+        <text>아직 회원이 아니신가요?</text>
+        <button onClick={() => navigate("/signup")}>회원가입</button>
+      </GoSignup>
     </Container>
   );
 };
@@ -91,37 +92,20 @@ const ErrorText = styled.span`
   color: red;
 `;
 
-const WrapperNextButton = styled.div`
-  //padding-top: 100px;
-  width: 600px;
-  height: 10px;
-  //position: relative;
-`;
-const NextButton = styled.button`
-  font-size: 20px;
-  width: 600px;
-  height: 60px;
-  border: none;
-  background-color: rgb(64, 68, 60);
-  border-radius: 10px;
-  color: white;
-`;
-
-const NoMember = styled.span`
-  font-size: 15px;
-`;
-
-const SignupButton = styled.button`
-  font-size: 15px;
-  color: red;
-  background: none;
-  border: none;
-`;
-
-const Signup = styled.div`
+const GoSignup = styled.div`
   display: flex;
   align-items: center;
   padding-top: 20px;
+
+  > button {
+    font-size: 15px;
+    color: red;
+    background: none;
+    border: none;
+  }
+  > text {
+    font-size: 15px;
+  }
 `;
 
 export default LoginPage;
