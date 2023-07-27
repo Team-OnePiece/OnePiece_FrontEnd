@@ -3,6 +3,7 @@ const colors = {
   MAIN2: "#F6CAC9",
   MAIN3: "#F1EEE9",
   MAIN4: "#615C60",
+  MAIN5: "#73786F",
   gray900: "#121212",
   gray800: "#343434",
   gray700: "#505050",
