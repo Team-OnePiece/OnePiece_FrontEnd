@@ -1,5 +1,6 @@
 import { styled } from "styled-components";
 import { Logo } from "../assets";
+import { Star } from "../assets";
 import { useState } from "react";
 import Post from "../components/common/Post";
 import axios from "axios";
