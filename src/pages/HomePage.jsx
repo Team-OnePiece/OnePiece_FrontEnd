@@ -6,9 +6,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisVertical } from "@fortawesome/free-solid-svg-icons";
 
 const HomePage = () => {
-  const GroupToggle = () => {
-    const [isTextVisible, setIsTextVisible] = useState(false);
-  };
+  const [isTextVisible, setIsTextVisible] = useState(false);
+  const GroupToggle = () => {};
   return (
     <Container>
       <Header>원은지님, 안녕하세요</Header>
@@ -47,8 +46,8 @@ const HomePage = () => {
               </IconWrapper>
             </PostTop>
             <PostPhoto></PostPhoto>
-            <PostBtm>
-              <PostBtmL>
+            <PostFooter>
+              <FooterLeft>
                 <IconNumber>
                   <StarIcon>
                     <img src={Star} alt="반응" />
@@ -56,20 +55,20 @@ const HomePage = () => {
                   <StarNumber>11</StarNumber>
                 </IconNumber>
                 <Place>배고파</Place>
-              </PostBtmL>
-              <TagWrapper>
-                <TagWrapper1>
+              </FooterLeft>
+              <TagContainer>
+                <TagWrapper>
                   <Tag>은진쌤♡</Tag>
                   <Tag>헤헤</Tag>
                   <Tag>아에이오우</Tag>
-                </TagWrapper1>
-                <TagWrapper2>
+                </TagWrapper>
+                <TagWrapper>
                   <Tag>햅삐햅삐</Tag>
                   <Tag>으이에</Tag>
                   <Tag>...</Tag>
-                </TagWrapper2>
-              </TagWrapper>
-            </PostBtm>
+                </TagWrapper>
+              </TagContainer>
+            </PostFooter>
           </Post>
         </MainWrapper>
         <MainWrapper>
@@ -88,8 +87,8 @@ const HomePage = () => {
               </IconWrapper>
             </PostTop>
             <PostPhoto></PostPhoto>
-            <PostBtm>
-              <PostBtmL>
+            <PostFooter>
+              <FooterLeft>
                 <IconNumber>
                   <StarIcon>
                     <img src={Star} alt="반응" />
@@ -97,20 +96,20 @@ const HomePage = () => {
                   <StarNumber>11</StarNumber>
                 </IconNumber>
                 <Place>배고파</Place>
-              </PostBtmL>
-              <TagWrapper>
-                <TagWrapper1>
+              </FooterLeft>
+              <TagContainer>
+                <TagWrapper>
                   <Tag>은진쌤♡</Tag>
                   <Tag>헤헤</Tag>
                   <Tag>아에이오우</Tag>
-                </TagWrapper1>
-                <TagWrapper2>
+                </TagWrapper>
+                <TagWrapper>
                   <Tag>햅삐햅삐</Tag>
                   <Tag>으이에</Tag>
                   <Tag>...</Tag>
-                </TagWrapper2>
-              </TagWrapper>
-            </PostBtm>
+                </TagWrapper>
+              </TagContainer>
+            </PostFooter>
           </Post>
         </MainWrapper>
         <MainWrapper>
@@ -129,8 +128,8 @@ const HomePage = () => {
               </IconWrapper>
             </PostTop>
             <PostPhoto></PostPhoto>
-            <PostBtm>
-              <PostBtmL>
+            <PostFooter>
+              <FooterLeft>
                 <IconNumber>
                   <StarIcon>
                     <img src={Star} alt="반응" />
@@ -138,20 +137,20 @@ const HomePage = () => {
                   <StarNumber>11</StarNumber>
                 </IconNumber>
                 <Place>배고파</Place>
-              </PostBtmL>
-              <TagWrapper>
-                <TagWrapper1>
+              </FooterLeft>
+              <TagContainer>
+                <TagWrapper>
                   <Tag>은진쌤♡</Tag>
                   <Tag>헤헤</Tag>
                   <Tag>아에이오우</Tag>
-                </TagWrapper1>
-                <TagWrapper2>
+                </TagWrapper>
+                <TagWrapper>
                   <Tag>햅삐햅삐</Tag>
                   <Tag>으이에</Tag>
                   <Tag>...</Tag>
-                </TagWrapper2>
-              </TagWrapper>
-            </PostBtm>
+                </TagWrapper>
+              </TagContainer>
+            </PostFooter>
           </Post>
         </MainWrapper>
       </Main>
@@ -160,29 +159,24 @@ const HomePage = () => {
 };
 
 const Tag = styled.div`
-  width: auto;
-  height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: auto;
+  height: 40px;
+  padding: 0px 20px;
   border: 1px solid #f6cac9;
   border-radius: 24px;
-  padding: 0px 20px;
-  font-size: 18px;
   color: ${({ theme }) => theme.colors.gray700};
-`;
-
-const TagWrapper1 = styled.div`
-  display: flex;
-  gap: 4px;
-`;
-
-const TagWrapper2 = styled.div`
-  display: flex;
-  gap: 4px;
+  font-size: 18px;
 `;
 
 const TagWrapper = styled.div`
+  display: flex;
+  gap: 4px;
+`;
+
+const TagContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -190,15 +184,15 @@ const TagWrapper = styled.div`
 `;
 
 const Place = styled.span`
-  font-size: 16px;
   color: ${({ theme }) => theme.colors.gray800};
+  font-size: 16px;
 `;
 
 const StarNumber = styled.span`
   display: flex;
   align-items: center;
-  font-size: 24px;
   color: black;
+  font-size: 24px;
 `;
 
 const StarIcon = styled.div`
@@ -215,32 +209,30 @@ const IconNumber = styled.div`
   gap: 10px;
 `;
 
-const PostBtmL = styled.div`
-  margin-left: 20px;
+const FooterLeft = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-top: 16px;
+  margin: 16px 0px 0px 20px;
 `;
 
-const PostBtm = styled.div`
-  width: 700px;
-  height: 100px;
+const PostFooter = styled.div`
   display: flex;
   gap: 280px;
+  width: 700px;
+  height: 100px;
   margin-top: 12px;
 `;
 
 const PostPhoto = styled.div`
   width: 700px;
   height: 700px;
-  border-radius: 8px;
   border: 1px solid black;
+  border-radius: 8px;
 `;
 
 const IconWrapper = styled.div`
-  margin-top: 15px;
-  margin-left: 20px;
+  margin: 15px 0px 0px 20px;
 `;
 
 const Date = styled.span`
@@ -250,13 +242,13 @@ const Date = styled.span`
 `;
 
 const ProfileID = styled.span`
-  font-size: 14px;
   color: black;
+  font-size: 14px;
 `;
 
 const ProfileName = styled.span`
-  font-size: 16px;
   color: black;
+  font-size: 16px;
 `;
 
 const NameId = styled.div`
@@ -271,20 +263,20 @@ const NameIdDate = styled.div`
 `;
 
 const ProfilePhoto = styled.div`
-  width: 50px;
-  height: 50px;
-  border-radius: 25px;
-  border: 1px solid black;
   display: flex;
   align-items: center;
+  width: 50px;
+  height: 50px;
   margin-left: 10px;
+  border: 1px solid black;
+  border-radius: 25px;
 `;
 
 const PostTop = styled.div`
   display: flex;
+  align-items: center;
   width: 700px;
   height: 70px;
-  align-items: center;
 `;
 
 const Post = styled.div`
@@ -306,8 +298,8 @@ const MainWrapper = styled.div`
 const SidebarText = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   gap: 400px;
   margin-top: 210px;
 `;
@@ -319,26 +311,26 @@ const SidebarBtm = styled.div`
 `;
 
 const MyPage = styled.div`
-  font-size: 32px;
   color: ${({ theme }) => theme.colors.gray600};
+  font-size: 32px;
 `;
 
 const PostUpDate = styled.div`
-  font-size: 32px;
   color: ${({ theme }) => theme.colors.gray600};
+  font-size: 32px;
 `;
 
 const Header = styled.div`
-  width: 1480px;
-  height: 122px;
   position: fixed;
   top: 0;
   left: 340px;
-  font-size: 30px;
-  color: ${({ theme }) => theme.colors.gray800};
+  width: 1480px;
+  height: 122px;
   display: flex;
   align-items: center;
   justify-content: right;
+  color: ${({ theme }) => theme.colors.gray800};
+  font-size: 30px;
 `;
 
 const GroupWrapper = styled.div`
@@ -348,52 +340,52 @@ const GroupWrapper = styled.div`
 `;
 
 const Group = styled.div`
-  font-size: 24px;
   color: ${({ theme }) => theme.colors.gray500};
+  font-size: 24px;
 `;
 
 const Groups = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 10px;
   align-items: center;
+  gap: 10px;
 `;
 
 const CurrentGroup = styled.div`
-  font-size: 32px;
-  color: ${({ theme }) => theme.colors.gray500};
   display: flex;
   align-items: center;
   justify-content: center;
+  color: ${({ theme }) => theme.colors.gray500};
+  font-size: 32px;
 `;
 
 const Sidebar = styled.div`
+  position: fixed;
   width: 400px;
   height: 100%;
-  position: fixed;
   img {
+    position: fixed;
     width: 322px;
     margin-top: 63px;
     margin-left: 63px;
-    position: fixed;
   }
 `;
 
 const Main = styled.div`
-  margin-top: 122px;
   display: flex;
   flex-direction: column;
   gap: 20px;
+  margin-top: 122px;
 `;
 
 const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
   width: 100%;
   height: 100%;
-  background-color: ${({ theme }) => theme.colors.gray0};
-  display: flex;
-  gap: 50px;
-  flex-direction: column;
   border-color: none;
+  background-color: ${({ theme }) => theme.colors.gray0};
 `;
 
 export default HomePage;
