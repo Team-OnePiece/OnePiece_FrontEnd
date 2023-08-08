@@ -2,14 +2,20 @@ import { styled } from "styled-components";
 import Eye from "./Eye";
 import { useState } from "react";
 
-const PasswordInput = () => {
+const PasswordInput = ({ id, placeholder, onChange, value }) => {
   const [isOpenPasswordEye, setIsOpenPasswordEye] = useState(false);
   const onEyeClickHandle = () => {
     setIsOpenPasswordEye(!isOpenPasswordEye);
   };
   return (
     <PasswordWrapper>
-      <input type="password" placeholder="비밀번호" />
+      <input
+        id={id}
+        placeholder={placeholder}
+        onChange={onChange}
+        value={value}
+        type={isOpenPasswordEye ? "text" : "password"}
+      />
       <Eye isShowPassword={isOpenPasswordEye} onClick={onEyeClickHandle} />
     </PasswordWrapper>
   );
