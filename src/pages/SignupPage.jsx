@@ -22,11 +22,55 @@ const SignupPage = () => {
 
   const onChange = (e) => {
     const { value, id } = e.target;
+    if (id === "nickname") {
+      setStudentNickName(value);
+    } else if (id === "id") {
+      setStudentId(value);
+    } else if (id === "password1") {
+      setPassword1(value);
+    } else if (id === "password2") {
+      setPassword2(value);
+    }
     setInput({
       ...input,
       [id]: value,
     });
   };
+
+  const [nicknameDuplicate, setNicknameDuplicate] = useState(false);
+
+  const nicknameCheck = () => {
+    if (nicknameDuplicate) {
+      alert("이미 사용중인 별명입니다.");
+    } else {
+      alert("사용 가능한 별명입니다.");
+    }
+  };
+
+  const [idDuplicate, setIdDuplicate] = useState(false);
+
+  const idCheck = () => {
+    if (idDuplicate) {
+      alert("이미 사용중인 아이디입니다.");
+    } else {
+      alert("사용 가능한 아이디입니다.");
+    }
+  };
+
+  const [studentNickname, setStudentNickName] = useState("");
+
+  const [studentId, setStudentId] = useState("");
+
+  const [password1, setPassword1] = useState("");
+
+  const [password2, setPassword2] = useState("");
+
+  const disabledNextButton = [
+    !(grade && classNumber && studentNumber),
+    !studentNickname || nicknameDuplicate,
+    !studentId || idDuplicate,
+    !(password1 === password2 && password1),
+  ];
 
   return (
     <Container>
@@ -42,7 +86,7 @@ const SignupPage = () => {
           <Line></Line>
           <Circle active={activeStep === 4}>4</Circle>
         </Step>
-        <InputContainer1>
+        <InputContainer>
           <input
             id="grade"
             placeholder="학년"
@@ -61,30 +105,50 @@ const SignupPage = () => {
             onChange={onChange}
             value={studentNumber}
           />
-        </InputContainer1>
+        </InputContainer>
         {activeStep >= 2 && (
           <NickName>
-            <input id="nickname" placeholder="별명" />
-            <button>중복확인</button>
+            <input
+              id="nickname"
+              placeholder="별명"
+              onChange={onChange}
+              value={studentNickname}
+            />
+            <button onClick={nicknameCheck}>중복확인</button>
           </NickName>
         )}
         {activeStep >= 3 && (
           <Id>
-            <input id="id" placeholder="아이디" />
-            <button>중복확인</button>
+            <input
+              id="id"
+              placeholder="아이디"
+              onChange={onChange}
+              value={studentId}
+            />
+            <button onClick={idCheck}>중복확인</button>
           </Id>
         )}
         {activeStep >= 4 && (
           <Password>
-            <PasswordInput></PasswordInput>
-            <PasswordInput></PasswordInput>
+            <PasswordInput
+              id="password1"
+              placeholder="비밀번호"
+              onChange={onChange}
+              value={password1}
+            ></PasswordInput>
+            <PasswordInput
+              id="password2"
+              placeholder="비밀번호 확인"
+              onChange={onChange}
+              value={password2}
+            ></PasswordInput>
           </Password>
         )}
         <NextButton
           onClick={nextStep}
-          disabled={!(grade && classNumber && studentNumber)}
+          disabled={disabledNextButton[activeStep - 1]}
         >
-          다음
+          {activeStep === 4 ? "로그인" : "다음"}
         </NextButton>
       </Wrapper>
     </Container>
@@ -103,10 +167,10 @@ const Id = styled.div`
   > input {
     width: 480px;
     height: 70px;
+    border: 1px solid ${({ theme }) => theme.colors.gray400};
     border-radius: 10px;
     padding: 0 20px;
     font-size: 22px;
-    border: 1px solid ${({ theme }) => theme.colors.gray400};
     &:focus {
       border-color: ${({ theme }) => theme.colors.MAIN1};
     }
@@ -117,11 +181,14 @@ const Id = styled.div`
   > button {
     width: 200px;
     height: 70px;
-    border-radius: 10px;
     border: none;
+    border-radius: 10px;
     background-color: ${({ theme }) => theme.colors.MAIN5};
     color: white;
     font-size: 22px;
+    &:focus {
+      background-color: ${({ theme }) => theme.colors.MAIN1};
+    }
   }
 `;
 
@@ -131,10 +198,10 @@ const NickName = styled.div`
   > input {
     width: 480px;
     height: 70px;
-    border-radius: 10px;
     padding: 0 20px;
-    font-size: 22px;
     border: 1px solid ${({ theme }) => theme.colors.gray400};
+    border-radius: 10px;
+    font-size: 22px;
     &:focus {
       border-color: ${({ theme }) => theme.colors.MAIN1};
     }
@@ -145,11 +212,14 @@ const NickName = styled.div`
   > button {
     width: 200px;
     height: 70px;
-    border-radius: 10px;
     border: none;
+    border-radius: 10px;
     background-color: ${({ theme }) => theme.colors.MAIN5};
     color: white;
     font-size: 22px;
+    &:focus {
+      background-color: ${({ theme }) => theme.colors.MAIN1};
+    }
   }
 `;
 
@@ -161,43 +231,42 @@ const Line = styled.div`
 `;
 
 const Circle = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 60px;
   height: 60px;
+  border-radius: 30px;
   background-color: ${({ theme, active }) =>
     active ? theme.colors.MAIN1 : theme.colors.MAIN2};
-  border-radius: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   color: ${({ theme }) => theme.colors.WHITE};
 `;
 
 const Step = styled.div`
   display: flex;
-  width: 700px;
-  height: 70px;
   justify-content: space-between;
   align-items: center;
+  width: 700px;
+  height: 70px;
 `;
 
 const Wrapper = styled.div`
-  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 20px;
+  width: 100%;
 `;
 
 const NextButton = styled.button`
   cursor: pointer;
-  font-size: 20px;
   width: 700px;
   height: 80px;
   border: none;
+  border-radius: 10px;
   background-color: ${({ theme }) => theme.colors.MAIN1};
   color: white;
-  border-radius: 10px;
   font-size: 28px;
 
   &:disabled {
@@ -206,19 +275,19 @@ const NextButton = styled.button`
   }
 `;
 
-const InputContainer1 = styled.div`
+const InputContainer = styled.div`
   display: flex;
-  gap: 20px;
   justify-content: center;
   align-items: center;
+  gap: 20px;
   border: none;
   > input {
     width: 220px;
     height: 70px;
-    border-radius: 10px;
     padding: 0 20px;
-    font-size: 22px;
+    border-radius: 10px;
     border: 1px solid ${({ theme }) => theme.colors.gray400};
+    font-size: 22px;
     &:focus {
       border-color: ${({ theme }) => theme.colors.MAIN1};
     }
@@ -229,26 +298,25 @@ const InputContainer1 = styled.div`
 `;
 
 const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
   width: 100%;
   height: 100%;
-  background-color: ${({ theme }) => theme.colors.gray0};
-  display: flex;
-  gap: 50px;
-  flex-direction: column;
   border-color: none;
+  background-color: ${({ theme }) => theme.colors.gray0};
 
   > img {
     width: 322px;
-    margin-top: 63px;
-    margin-left: 63px;
+    margin: 63px 0px 0px 63px;
   }
 `;
 
 const Title = styled.h1`
+  margin-right: 600px;
+  color: ${({ theme }) => theme.colors.gray700};
   font-size: 32px;
   font-weight: 400;
-  color: ${({ theme }) => theme.colors.gray700};
-  margin-right: 600px;
 `;
 
 export default SignupPage;
