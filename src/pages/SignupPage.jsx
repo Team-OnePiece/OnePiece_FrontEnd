@@ -2,6 +2,7 @@ import { styled } from "styled-components";
 import { Logo } from "../assets";
 import { useState } from "react";
 import PasswordInput from "../components/common/Password";
+import { useSignupMutation } from "../api/user/index";
 
 const SignupPage = () => {
   const [activeStep, setActiveStep] = useState(1);
@@ -71,6 +72,17 @@ const SignupPage = () => {
     !studentId || idDuplicate,
     !(password1 === password2 && password1),
   ];
+
+  const { mutate } = useSignupMutation();
+  mutate({
+    account_id: "",
+    password: "",
+    password_vaild: "",
+    nickname: "",
+    grade: "",
+    class_number: "",
+    number: "",
+  });
 
   return (
     <Container>
@@ -145,7 +157,7 @@ const SignupPage = () => {
           </Password>
         )}
         <NextButton
-          onClick={nextStep}
+          onClick={activeStep === 4 ? useSignupMutation : nextStep}
           disabled={disabledNextButton[activeStep - 1]}
         >
           {activeStep === 4 ? "로그인" : "다음"}
