@@ -81,13 +81,15 @@ const LogoContainer = styled.div`
   flex-direction: column;
   > img {
     width: 250px;
-    margin-top: 11px;
-    margin-left: 12px;
   }
 `;
 
 const MyPageTxT = styled.span`
-  padding-left: 400px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  right: 300px;
+  bottom: 30px;
   font-size: 16px;
 `;
 
@@ -105,6 +107,8 @@ const AvatarContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
+  bottom: 50px;
   > p {
     color: ${({ theme }) => theme.colors.gray500};
   }
@@ -132,7 +136,9 @@ const BottomBtnContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 100px;
+  /* margin-top: 100px; */
+  position: relative;
+  top: 50px;
   gap: 60px;
 `;
 
@@ -140,6 +146,8 @@ const Txt = styled.p`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  bottom: 30px;
   font-size: 20px;
 `;
 
@@ -148,6 +156,8 @@ const IdContainer = styled.div`
   justify-content: center;
   align-items: center;
   gap: 10px;
+  position: relative;
+  bottom: 50px;
   > input {
     width: 340px;
     height: 40px;
