@@ -3,7 +3,7 @@ import { useMutation } from "@tanstack/react-query";
 
 export const useStarAdd = () => {
   const response = async (param) => {
-    return instance.post("/user/star{feedId}");
+    return instance.post("/star{feedId}");
   };
 
   return useMutation(response, {
@@ -14,7 +14,7 @@ export const useStarAdd = () => {
 
 export const useStarDelete = () => {
   const response = async (param) => {
-    return instance.delete("/user/star{feedId}");
+    return instance.delete("/star{feedId}");
   };
 
   return useMutation(response, {
