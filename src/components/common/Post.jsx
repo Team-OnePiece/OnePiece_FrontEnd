@@ -5,26 +5,19 @@ import { Photo } from "../../assets";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisVertical } from "@fortawesome/free-solid-svg-icons";
-import axios from "axios";
+import { useStarAdd, useFeedDelete } from "../../api/feed/index";
 
 const Post = () => {
   const [isStarClick, setIsStarClick] = useState(false);
   const [like, setLike] = useState(0);
 
-  const onStarClick = async () => {
-    try {
-      const response = await axios.post("/star/{board-id}", {});
-      if (response.status === 200) {
-        if (isStarClick) {
-          setLike(like - 1);
-        } else {
-          setLike(like + 1);
-        }
-        setIsStarClick(!isStarClick);
-      }
-    } catch (error) {
-      console.error(error);
+  const onStarClick = () => {
+    if (isStarClick) {
+      setLike(like - 1);
+    } else {
+      setLike(like + 1);
     }
+    setIsStarClick(!isStarClick);
   };
 
   const [isEditDeleteVisible, setIsEditDeleteVisible] = useState(false);
@@ -39,6 +32,20 @@ const Post = () => {
     setIsDeleteVisible(!isDeleteVisible);
     setIsEditDeleteVisible(false);
   };
+
+  const [feedDelete, setFeedDelete] = useState(false);
+  const { data: isFeedDelete } = useFeedDelete();
+
+  const handleDelete = () => {
+    if (isFeedDelete) {
+      alert("게시글이 삭제되었습니다.");
+      setFeedDelete(true);
+    } else {
+      alert("게시글 삭제에 실패하였습니다.");
+      setFeedDelete(false);
+    }
+  };
+
   return (
     <PostWrapper>
       <PostTop>
@@ -81,7 +88,7 @@ const Post = () => {
                 취소
               </CancleCheck>
               <HeightLine></HeightLine>
-              <CancleCheck>확인</CancleCheck>
+              <CancleCheck onClick={handleDelete}>확인</CancleCheck>
             </CancleCheckWrapper>
           </DeleteWrapper>
         )}
