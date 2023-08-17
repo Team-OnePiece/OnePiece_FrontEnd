@@ -2,7 +2,12 @@ import { styled } from "styled-components";
 import { Logo } from "../assets";
 import { useState } from "react";
 import PasswordInput from "../components/common/Password";
-import { useSignupMutation } from "../api/user/index";
+import {
+  useSignupMutation,
+  useNicknameDuplicate,
+  useIdDuplicate,
+  useStudentDuplicate,
+} from "../api/user/index";
 
 const SignupPage = () => {
   const [activeStep, setActiveStep] = useState(1);
@@ -39,22 +44,41 @@ const SignupPage = () => {
   };
 
   const [nicknameDuplicate, setNicknameDuplicate] = useState(false);
+  const { data: isNicknameDuplicate } = useNicknameDuplicate();
 
   const nicknameCheck = () => {
-    if (nicknameDuplicate) {
+    if (isNicknameDuplicate) {
       alert("이미 사용중인 별명입니다.");
+      setNicknameDuplicate(true);
     } else {
       alert("사용 가능한 별명입니다.");
+      setNicknameDuplicate(false);
     }
   };
 
   const [idDuplicate, setIdDuplicate] = useState(false);
+  const { data: isIdDuplicate } = useIdDuplicate();
 
   const idCheck = () => {
-    if (idDuplicate) {
+    if (isIdDuplicate) {
       alert("이미 사용중인 아이디입니다.");
+      setIdDuplicate(true);
     } else {
       alert("사용 가능한 아이디입니다.");
+      setIdDuplicate(false);
+    }
+  };
+
+  const [studentDuplicate, setStudentDuplicate] = useState(false);
+  const { data: isStudentDuplicate } = useStudentDuplicate();
+
+  const studentCheck = () => {
+    if (isStudentDuplicate) {
+      alert("이미 사용중인 학번입니다.");
+      setStudentDuplicate(true);
+    } else {
+      alert("사용 가능한 학번입니다.");
+      setStudentDuplicate(false);
     }
   };
 
@@ -67,23 +91,13 @@ const SignupPage = () => {
   const [password2, setPassword2] = useState("");
 
   const disabledNextButton = [
-    !(grade && classNumber && studentNumber),
+    !(grade && classNumber && studentNumber) || studentDuplicate,
     !studentNickname || nicknameDuplicate,
     !studentId || idDuplicate,
     !(password1 === password2 && password1),
   ];
 
   const { mutate } = useSignupMutation();
-  mutate({
-    account_id: "",
-    password: "",
-    password_vaild: "",
-    nickname: "",
-    grade: "",
-    class_number: "",
-    number: "",
-  });
-
   return (
     <Container>
       <img src={Logo} alt="로고" />
@@ -117,6 +131,7 @@ const SignupPage = () => {
             onChange={onChange}
             value={studentNumber}
           />
+          <button onClick={studentCheck}>중복확인</button>
         </InputContainer>
         {activeStep >= 2 && (
           <NickName>
@@ -157,7 +172,19 @@ const SignupPage = () => {
           </Password>
         )}
         <NextButton
-          onClick={activeStep === 4 ? useSignupMutation : nextStep}
+          onClick={() => {
+            activeStep === 4
+              ? mutate({
+                  accout_id: studentId,
+                  password: password1,
+                  password_valid: password2,
+                  nickname: studentNickname,
+                  grade: grade,
+                  class_number: classNumber,
+                  number: studentNumber,
+                })
+              : nextStep();
+          }}
           disabled={disabledNextButton[activeStep - 1]}
         >
           {activeStep === 4 ? "로그인" : "다음"}
@@ -294,7 +321,7 @@ const InputContainer = styled.div`
   gap: 20px;
   border: none;
   > input {
-    width: 220px;
+    width: 147px;
     height: 70px;
     padding: 0 20px;
     border-radius: 10px;
@@ -305,6 +332,18 @@ const InputContainer = styled.div`
     }
     &::placeholder {
       font-size: 20px;
+    }
+  }
+  > button {
+    width: 200px;
+    height: 70px;
+    border: none;
+    border-radius: 10px;
+    background-color: ${({ theme }) => theme.colors.MAIN5};
+    color: white;
+    font-size: 22px;
+    &:focus {
+      background-color: ${({ theme }) => theme.colors.MAIN1};
     }
   }
 `;
