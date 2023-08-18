@@ -18,7 +18,7 @@ export const useStarDelete = () => {
   };
 
   return useMutation(response, {
-    onError: () => alert("반응추가에 실패하였습니다."),
-    onSuccess: () => alert("반응추가에 성공하였습니다."),
+    onError: () => alert("반응삭제에 실패하였습니다."),
+    onSuccess: () => alert("반응삭제에 성공하였습니다."),
   });
 };
