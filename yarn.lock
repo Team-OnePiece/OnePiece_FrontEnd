@@ -4,22 +4,22 @@
 
 "@aashutoshrathi/word-wrap@^1.2.3":
   version "1.2.6"
-  resolved "https://registry.yarnpkg.com/@aashutoshrathi/word-wrap/-/word-wrap-1.2.6.tgz#bd9154aec9983f77b3a034ecaa015c2e4201f6cf"
+  resolved "https://registry.npmjs.org/@aashutoshrathi/word-wrap/-/word-wrap-1.2.6.tgz"
   integrity sha512-1Yjs2SvM8TflER/OD3cOjhWWOZb58A2t7wpE2S9XfBYTiIl+XFhQG2bjy4Pu1I+EAlCNUzRDYDdFwFYUKvXcIA==
 
 "@adobe/css-tools@^4.0.1":
   version "4.2.0"
-  resolved "https://registry.yarnpkg.com/@adobe/css-tools/-/css-tools-4.2.0.tgz#e1a84fca468f4b337816fcb7f0964beb620ba855"
+  resolved "https://registry.npmjs.org/@adobe/css-tools/-/css-tools-4.2.0.tgz"
   integrity sha512-E09FiIft46CmH5Qnjb0wsW54/YQd69LsxeKUOWawmws1XWvyFGURnAChH0mlr7YPFR1ofwvUQfcL0J3lMxXqPA==
 
 "@alloc/quick-lru@^5.2.0":
   version "5.2.0"
-  resolved "https://registry.yarnpkg.com/@alloc/quick-lru/-/quick-lru-5.2.0.tgz#7bf68b20c0a350f936915fcae06f58e32007ce30"
+  resolved "https://registry.npmjs.org/@alloc/quick-lru/-/quick-lru-5.2.0.tgz"
   integrity sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==
 
 "@ampproject/remapping@^2.2.0":
   version "2.2.1"
-  resolved "https://registry.yarnpkg.com/@ampproject/remapping/-/remapping-2.2.1.tgz#99e8e11851128b8702cd57c33684f1d0f260b630"
+  resolved "https://registry.npmjs.org/@ampproject/remapping/-/remapping-2.2.1.tgz"
   integrity sha512-lFMjJTrFL3j7L9yBxwYfCq2k6qqwHyzuUl/XBnif78PWTJYyL/dfowQHWE3sp6U6ZzqWiiIZnpTMO96zhkjwtg==
   dependencies:
     "@jridgewell/gen-mapping" "^0.3.0"
@@ -27,14 +27,14 @@
 
 "@ant-design/colors@^7.0.0":
   version "7.0.0"
-  resolved "https://registry.yarnpkg.com/@ant-design/colors/-/colors-7.0.0.tgz#eb7eecead124c3533aea05d61254f0a17f2b61b3"
+  resolved "https://registry.npmjs.org/@ant-design/colors/-/colors-7.0.0.tgz"
   integrity sha512-iVm/9PfGCbC0dSMBrz7oiEXZaaGH7ceU40OJEfKmyuzR9R5CRimJYPlRiFtMQGQcbNMea/ePcoIebi4ASGYXtg==
   dependencies:
     "@ctrl/tinycolor" "^3.4.0"
 
 "@ant-design/cssinjs@^1.10.1":
   version "1.13.2"
-  resolved "https://registry.yarnpkg.com/@ant-design/cssinjs/-/cssinjs-1.13.2.tgz#833098a6866a9f754e31562b0d5dc8b1133648d9"
+  resolved "https://registry.npmjs.org/@ant-design/cssinjs/-/cssinjs-1.13.2.tgz"
   integrity sha512-II3QJx6V6boYkAIUiEd1/hquSeX1r67sUOtsvco35fTmV46JvkJz946/6K+ikiuODBSE1kLf7fJ5gHetQyUyww==
   dependencies:
     "@babel/runtime" "^7.11.1"
@@ -47,12 +47,12 @@
 
 "@ant-design/icons-svg@^4.2.1":
   version "4.2.1"
-  resolved "https://registry.yarnpkg.com/@ant-design/icons-svg/-/icons-svg-4.2.1.tgz#8630da8eb4471a4aabdaed7d1ff6a97dcb2cf05a"
+  resolved "https://registry.npmjs.org/@ant-design/icons-svg/-/icons-svg-4.2.1.tgz"
   integrity sha512-EB0iwlKDGpG93hW8f85CTJTs4SvMX7tt5ceupvhALp1IF44SeUFOMhKUOYqpsoYWQKAOuTRDMqn75rEaKDp0Xw==
 
 "@ant-design/icons@^5.1.0":
   version "5.1.4"
-  resolved "https://registry.yarnpkg.com/@ant-design/icons/-/icons-5.1.4.tgz#614e29e26d092c2c1c1a2acbc0d84434d8d1474e"
+  resolved "https://registry.npmjs.org/@ant-design/icons/-/icons-5.1.4.tgz"
   integrity sha512-YHKL7Jx3bM12OxvtiYDon04BsBT/6LGitYEqar3GljzWaAyMOAD8i/uF1Rsi5Us/YNdWWXBGSvZV2OZWMpJlcA==
   dependencies:
     "@ant-design/colors" "^7.0.0"
@@ -63,7 +63,7 @@
 
 "@ant-design/react-slick@~1.0.0":
   version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@ant-design/react-slick/-/react-slick-1.0.2.tgz#241bb412aeacf7ff5d50c61fa5db66773fde6b56"
+  resolved "https://registry.npmjs.org/@ant-design/react-slick/-/react-slick-1.0.2.tgz"
   integrity sha512-Wj8onxL/T8KQLFFiCA4t8eIRGpRR+UPgOdac2sYzonv+i0n3kXHmvHLLiOYL655DQx2Umii9Y9nNgL7ssu5haQ==
   dependencies:
     "@babel/runtime" "^7.10.4"
@@ -74,7 +74,7 @@
 
 "@apideck/better-ajv-errors@^0.3.1":
   version "0.3.6"
-  resolved "https://registry.yarnpkg.com/@apideck/better-ajv-errors/-/better-ajv-errors-0.3.6.tgz#957d4c28e886a64a8141f7522783be65733ff097"
+  resolved "https://registry.npmjs.org/@apideck/better-ajv-errors/-/better-ajv-errors-0.3.6.tgz"
   integrity sha512-P+ZygBLZtkp0qqOAJJVX4oX/sFo5JR3eBWwwuqHHhK0GIgQOKWrAfiAaWX0aArHkRWHMuggFEgAZNxVPwPZYaA==
   dependencies:
     json-schema "^0.4.0"
@@ -1437,7 +1437,7 @@
   resolved "https://registry.npmjs.org/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-6.4.2.tgz"
   integrity sha512-1DgP7f+XQIJbLFCTX1V2QnxVmpLdKdzzo2k8EmvDOePfchaIGQ9eCHj2up3/jNEbZuBqel5OxiaOJf37TWauRA==
 
-"@fortawesome/fontawesome-svg-core@^6.4.2":
+"@fortawesome/fontawesome-svg-core@^6.4.2", "@fortawesome/fontawesome-svg-core@~1 || ~6":
   version "6.4.2"
   resolved "https://registry.npmjs.org/@fortawesome/fontawesome-svg-core/-/fontawesome-svg-core-6.4.2.tgz"
   integrity sha512-gjYDSKv3TrM2sLTOKBc5rH9ckje8Wrwgx1CxAPbN5N3Fm4prfi7NsJVWd1jklp7i5uSCVwhZS5qlhMXqLrpAIg==
@@ -5077,11 +5077,6 @@ fs.realpath@^1.0.0:
   resolved "https://registry.npmjs.org/fs.realpath/-/fs.realpath-1.0.0.tgz"
   integrity sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==
 
-fsevents@^2.3.2, fsevents@~2.3.2:
-  version "2.3.2"
-  resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-2.3.2.tgz#8a526f78b8fdf4623b709e0b975c52c24c02fd1a"
-  integrity sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==
-
 function-bind@^1.1.1:
   version "1.1.1"
   resolved "https://registry.npmjs.org/function-bind/-/function-bind-1.1.1.tgz"
@@ -8542,7 +8537,7 @@ react-scripts@5.0.1:
   optionalDependencies:
     fsevents "^2.3.2"
 
-react@^18.2.0:
+react@*, "react@^16.8.0 || ^17.0.0 || ^18.0.0", react@^18.0.0, react@^18.2.0, "react@>= 16", "react@>= 16.8.0", react@>=16.0.0, react@>=16.11.0, react@>=16.3, react@>=16.8, react@>=16.9.0:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==
