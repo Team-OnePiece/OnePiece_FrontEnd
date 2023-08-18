@@ -2,7 +2,7 @@ import { styled } from "styled-components";
 import { Logo } from "../assets";
 import { useState } from "react";
 import Post from "../components/common/Post";
-import axios from "axios";
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
   const [isTextVisible, setIsTextVisible] = useState(false);
@@ -27,7 +27,7 @@ const HomePage = () => {
           </GroupWrapper>
           <SidebarBtm>
             <PostUpDate>추가하기</PostUpDate>
-            <MyPage>마이페이지</MyPage>
+            <MyPage to={"/mypage"}>마이페이지</MyPage>
           </SidebarBtm>
         </SidebarText>
       </Sidebar>
@@ -75,10 +75,11 @@ const SidebarBtm = styled.div`
   align-items: center;
 `;
 
-const MyPage = styled.div`
+const MyPage = styled(Link)`
   cursor: pointer;
   color: ${({ theme }) => theme.colors.gray600};
   font-size: 32px;
+  text-decoration: none;
 `;
 
 const PostUpDate = styled.div`
