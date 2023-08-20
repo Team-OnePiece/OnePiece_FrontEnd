@@ -7,11 +7,16 @@ import Input from "../components/common/Input";
 
 const FeedPage = () => {
   const navigate = useNavigate();
+  const [tag, setTag] = useState([]);
+  let [tagInputCount, setTagInputCount] = useState(0);
+  let [inputCount, setInputCount] = useState(0);
 
+  const onTagInputHandler = (e) => {
+    setTagInputCount(e.target.value.length);
+  };
   const onInputHandler = (e) => {
     setInputCount(e.target.value.length);
   };
-  let [inputCount, setInputCount] = useState(0);
 
   // 이미지 관련 함수 --------
   const [Image, setImage] = useState(
@@ -40,6 +45,12 @@ const FeedPage = () => {
     reader.readAsDataURL(e.target.files[0]);
   };
   // 이미지 관련 함수 --------
+
+  const handleOnKeyPress = (e) => {
+    if (e.key === "Enter") {
+      setTag((prevList) => [...prevList, e.target.value]);
+    }
+  };
 
   return (
     <Container>
@@ -75,15 +86,23 @@ const FeedPage = () => {
               <span>/10</span>
             </p>
           </InputContainer>
-          <p>태그는 최대 6개, 최대 10자까지 작성 가능합니다.</p>
           <InputContainer>
-            <Input onChange={onInputHandler} maxLength="10" />
+            <Input
+              onChange={onTagInputHandler}
+              maxLength="10"
+              placeholder="태그는 최대 6개, 최대 10자까지 작성 가능합니다."
+              onKeyPress={handleOnKeyPress}
+            />
             <p>
-              <span>{inputCount}</span>
+              <span>{tagInputCount}</span>
               <span>/10</span>
             </p>
           </InputContainer>
-          {/* <TagAddButton>+</TagAddButton> */}
+          <TagContainer>
+            {tag.map((value) => (
+              <TagBox>{value}</TagBox>
+            ))}
+          </TagContainer>
         </ContentContainer>
         <UploadContainer>
           <BottomBtnContainer>
@@ -153,17 +172,6 @@ const ContentContainer = styled.div`
   }
 `;
 
-// const TagAddButton = styled.button`
-//   width: 60px;
-//   height: 30px;
-//   border-radius: 24px;
-//   border: 1px solid;
-//   border-color: rgb(239, 204, 202);
-//   color: black;
-//   font-size: 20px;
-//   background-color: white;
-// `;
-
 const UploadContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -209,6 +217,21 @@ const UploadBtn = styled.button`
   height: 50px;
   border-radius: 8px;
   font-size: 20px;
+`;
+
+const TagContainer = styled.div`
+  display: flex;
+  margin-top: 30px;
+`;
+
+const TagBox = styled.span`
+  width: 100px;
+  height: 50px;
+  border: 1px solid ${({ theme }) => theme.colors.MAIN2};
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export default FeedPage;

@@ -3,8 +3,6 @@ import { Logo } from "../assets";
 import Post from "../components/common/Post";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import Post from "../components/common/Post";
-import { Link } from "react-router-dom";
 
 const HomePage = () => {
   const [posts, setPosts] = useState([
