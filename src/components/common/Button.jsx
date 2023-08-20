@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 
-const Button = ({ text }) => {
-  return <ButtonBox>{text}</ButtonBox>;
+const Button = ({ text, disabled }) => {
+  return <ButtonBox disabled={disabled}>{text}</ButtonBox>;
 };
 
 const ButtonBox = styled.button`
