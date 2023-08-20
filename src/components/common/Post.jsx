@@ -6,6 +6,7 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisVertical } from "@fortawesome/free-solid-svg-icons";
 import { useFeedDelete } from "../../api/feed/index";
+import { Link } from "react-router-dom";
 
 const Post = ({ profileName, profileId }) => {
   const [isStarClick, setIsStarClick] = useState(false);
@@ -69,7 +70,7 @@ const Post = ({ profileName, profileId }) => {
         <img src={Photo} alt="게시글 사진" />
         {isEditDeleteVisible && (
           <EditDeleteWrapper>
-            <EditDelete>수정하기</EditDelete>
+            <EditDelete to="/Feedpage">수정하기</EditDelete>
             <Line></Line>
             <EditDelete onClick={toggleDelete}>삭제하기</EditDelete>
           </EditDeleteWrapper>
@@ -179,7 +180,7 @@ const EditDeleteWrapper = styled.div`
   border-color: ${({ theme }) => theme.colors.gray300};
 `;
 
-const EditDelete = styled.div`
+const EditDelete = styled(Link)`
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -187,6 +188,8 @@ const EditDelete = styled.div`
   width: 250px;
   height: 150px;
   font-size: 24px;
+  text-decoration-line: none;
+  color: black;
 `;
 
 const Line = styled.div`
