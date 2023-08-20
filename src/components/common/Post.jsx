@@ -5,9 +5,9 @@ import { Photo } from "../../assets";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisVertical } from "@fortawesome/free-solid-svg-icons";
-import { useStarAdd, useFeedDelete } from "../../api/feed/index";
+import { useFeedDelete } from "../../api/feed/index";
 
-const Post = () => {
+const Post = ({ profileName, profileId }) => {
   const [isStarClick, setIsStarClick] = useState(false);
   const [like, setLike] = useState(0);
 
@@ -37,14 +37,12 @@ const Post = () => {
   const { data: isFeedDelete } = useFeedDelete();
 
   const handleDelete = () => {
-    if (isFeedDelete) {
-      alert("게시글이 삭제되었습니다.");
-      setFeedDelete(true);
-    } else {
-      alert("게시글 삭제에 실패하였습니다.");
-      setFeedDelete(false);
-    }
+    setFeedDelete(true);
   };
+
+  if (feedDelete) {
+    return null;
+  }
 
   return (
     <PostWrapper>
@@ -54,10 +52,10 @@ const Post = () => {
         </ProfilePhoto>
         <NameIdDate>
           <NameId>
-            <ProfileName>원은지</ProfileName>
-            <ProfileID>kfknkfdk</ProfileID>
+            <ProfileName>{profileName}</ProfileName>
+            <ProfileID>{profileId}</ProfileID>
           </NameId>
-          <Date>2023-08-01</Date>
+          <Date>2023-08-20</Date>
         </NameIdDate>
         <IconWrapper>
           <FontAwesomeIcon
@@ -105,14 +103,9 @@ const Post = () => {
         </FooterLeft>
         <TagContainer>
           <TagWrapper>
-            <Tag>아에이오우</Tag>
-            <Tag>아에이오우</Tag>
-            <Tag>아에이오우</Tag>
-          </TagWrapper>
-          <TagWrapper>
-            <Tag>아에이오우</Tag>
-            <Tag>아에이오우</Tag>
-            <Tag>아에이오우</Tag>
+            <Tag>가나다라마</Tag>
+            <Tag>바사아자차</Tag>
+            <Tag>대마고</Tag>
           </TagWrapper>
         </TagContainer>
       </PostFooter>

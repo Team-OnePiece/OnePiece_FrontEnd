@@ -1,30 +1,28 @@
 import { styled } from "styled-components";
 import { Logo } from "../assets";
+import Post from "../components/common/Post";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import Post from "../components/common/Post";
 import { Link } from "react-router-dom";
 
 const HomePage = () => {
-  const [isTextVisible, setIsTextVisible] = useState(false);
+  const [posts, setPosts] = useState([
+    // 초기 게시물 데이터
+    { id: 1, profileName: "User1", profileId: "user1" },
+    { id: 2, profileName: "User2", profileId: "user2" },
+    // ... (이하 생략)
+  ]);
 
+  const handlePostDelete = (postId) => {
+    setPosts(posts.filter((post) => post.id !== postId)); // 해당 postId에 해당하는 Post 삭제
+  };
   return (
     <Container>
-      <Header>원은지님, 안녕하세요</Header>
+      <Header>User1님, 안녕하세요</Header>
       <Sidebar>
         <img src={Logo} alt="로고" />
         <SidebarText>
-          <GroupWrapper>
-            <CurrentGroup onClick={() => setIsTextVisible(!isTextVisible)}>
-              2023
-            </CurrentGroup>
-            {isTextVisible && (
-              <Groups>
-                <Group>2022</Group>
-                <Group>2021</Group>
-                <Group>1-4(2021)</Group>
-              </Groups>
-            )}
-          </GroupWrapper>
           <SidebarBtm>
             <PostUpDate>추가하기</PostUpDate>
             <MyPage to={"/mypage"}>마이페이지</MyPage>
@@ -34,13 +32,23 @@ const HomePage = () => {
       <Main>
         <MainWrapper>
           <Ment>어떤 하루를 보냈나요?</Ment>
-          <Post />
+          <Post
+            key={posts[0].id} // 첫 번째 게시물의 id 사용
+            profileName={posts[0].profileName} // 첫 번째 게시물의 profileName 사용
+            profileId={posts[0].profileId} // 첫 번째 게시물의 profileId 사용
+            onDelete={() => handlePostDelete(posts[0].id)}
+          />
         </MainWrapper>
         <MainWrapper>
-          <Post />
+          <Post
+            key={posts[1].id} // 첫 번째 게시물의 id 사용
+            profileName={posts[1].profileName} // 첫 번째 게시물의 profileName 사용
+            profileId={posts[1].profileId} // 첫 번째 게시물의 profileId 사용
+            onDelete={() => handlePostDelete(posts[1].id)}
+          />
         </MainWrapper>
         <MainWrapper>
-          <Post />
+          <Post profileName="대마고" profileId="dsmdsm" />
         </MainWrapper>
       </Main>
     </Container>
@@ -99,34 +107,6 @@ const Header = styled.div`
   justify-content: right;
   color: ${({ theme }) => theme.colors.gray800};
   font-size: 30px;
-`;
-
-const GroupWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-`;
-
-const Group = styled.div`
-  cursor: pointer;
-  color: ${({ theme }) => theme.colors.gray500};
-  font-size: 24px;
-`;
-
-const Groups = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-`;
-
-const CurrentGroup = styled.div`
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: ${({ theme }) => theme.colors.gray500};
-  font-size: 32px;
 `;
 
 const Sidebar = styled.div`

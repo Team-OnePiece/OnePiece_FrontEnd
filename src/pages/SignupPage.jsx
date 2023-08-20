@@ -8,6 +8,7 @@ import {
   useIdDuplicate,
   useStudentDuplicate,
 } from "../api/user/index";
+import { Link } from "react-router-dom";
 
 const SignupPage = () => {
   const [activeStep, setActiveStep] = useState(1);
@@ -188,12 +189,18 @@ const SignupPage = () => {
           }}
           disabled={disabledNextButton[activeStep - 1]}
         >
-          {activeStep === 4 ? "로그인" : "다음"}
+          {activeStep === 4 ? <SLink to="/">로그인</SLink> : "다음"}
         </NextButton>
       </Wrapper>
     </Container>
   );
 };
+
+const SLink = styled(Link)`
+  color: white;
+  font-size: 28px;
+  text-decoration-line: none;
+`;
 
 const Password = styled.div`
   display: flex;
