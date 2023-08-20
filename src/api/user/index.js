@@ -9,7 +9,7 @@ export const useSignupMutation = () => {
 
   //get을 제외한 나머지 친구들
   return useMutation(response, {
-    onError: () => alert("회원가입에 실패하였습니다."),
+    onError: (e) => console.log(e),
     onSuccess: () => alert("회원가입에 성공하였습니다."),
   });
 };
@@ -31,7 +31,7 @@ export const useIdDuplicate = () => {
 
 export const useStudentDuplicate = () => {
   const response = async (param) => {
-    return instance.get("/user/student/duplicate");
+    return instance.get("/user/student/id/duplicate");
   };
   return useQuery("student", response);
 };
