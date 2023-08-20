@@ -11,7 +11,7 @@ const Eye = ({ isShowPassword, onClick }) => {
 
 const EyeContainer = styled.div`
   position: absolute;
-  top: 25px;
+  top: 45px;
   right: 20px;
   cursor: pointer;
 `;
