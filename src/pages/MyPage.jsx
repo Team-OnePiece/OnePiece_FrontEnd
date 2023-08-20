@@ -8,7 +8,7 @@ const MyPage = () => {
     "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
   );
   const fileInput = useRef(null);
-  const myId = "내 예전 아이디";
+  // const myId = "내 예전 아이디";
 
   const onChange = (e) => {
     if (e.target.files[0]) {
@@ -35,6 +35,7 @@ const MyPage = () => {
       <LogoContainer>
         <img src={Logo} alt="로고" />
       </LogoContainer>
+      <MyPageTxT>마이 페이지</MyPageTxT>
       <Txt>OO님, 오늘은 어떤 하루를 보냈나요?</Txt>
       <AvatarContainer>
         <Avatar src={Image} size={200} />
@@ -43,7 +44,7 @@ const MyPage = () => {
             fileInput.current.click();
           }}
         >
-          작성하기
+          수정하기
         </p>
         <input
           type="file"
@@ -55,7 +56,7 @@ const MyPage = () => {
         />
       </AvatarContainer>
       <IdContainer>
-        <input type="text" placeholder={myId} />
+        <input type="text" />
         <CheckBtn>중복확인</CheckBtn>
       </IdContainer>
       <BottomBtnContainer>
@@ -80,9 +81,16 @@ const LogoContainer = styled.div`
   flex-direction: column;
   > img {
     width: 250px;
-    margin-top: 11px;
-    margin-left: 12px;
   }
+`;
+
+const MyPageTxT = styled.span`
+  display: flex;
+  justify-content: center;
+  position: relative;
+  right: 300px;
+  bottom: 30px;
+  font-size: 16px;
 `;
 
 const Avatar = styled.img`
@@ -99,6 +107,8 @@ const AvatarContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
+  bottom: 50px;
   > p {
     color: ${({ theme }) => theme.colors.gray500};
   }
@@ -126,6 +136,9 @@ const BottomBtnContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  /* margin-top: 100px; */
+  position: relative;
+  top: 50px;
   gap: 60px;
 `;
 
@@ -133,6 +146,9 @@ const Txt = styled.p`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  bottom: 30px;
+  font-size: 20px;
 `;
 
 const IdContainer = styled.div`
@@ -140,6 +156,8 @@ const IdContainer = styled.div`
   justify-content: center;
   align-items: center;
   gap: 10px;
+  position: relative;
+  bottom: 50px;
   > input {
     width: 340px;
     height: 40px;

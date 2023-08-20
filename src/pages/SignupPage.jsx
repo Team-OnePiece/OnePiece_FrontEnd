@@ -92,6 +92,7 @@ const SignupPage = () => {
 
   const disabledNextButton = [
     !(grade && classNumber && studentNumber) || studentDuplicate,
+
     !studentNickname || nicknameDuplicate,
     !studentId || idDuplicate,
     !(password1 === password2 && password1),
