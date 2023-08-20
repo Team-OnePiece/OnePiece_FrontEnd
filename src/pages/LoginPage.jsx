@@ -42,7 +42,7 @@ const LoginPage = () => {
         ))}
         <ErrorText>비밀번호 또는 아이디 확인하세요.</ErrorText>
       </InputContainer>
-      <Button text="로그인하기" />
+      <Button text="로그인하기" disabled={false} />
       <GoSignup>
         <text>아직 회원이 아니신가요?</text>
         <button onClick={() => navigate("/signup")}>회원가입</button>

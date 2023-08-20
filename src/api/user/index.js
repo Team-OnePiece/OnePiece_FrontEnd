@@ -1,6 +1,18 @@
 import { instance } from "../axios";
-import { useMutation } from "@tanstack/react-query";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation } from "react-query";
+import { useQuery } from "react-query";
+
+
+export const login = () => {
+  const response = async (param) => {
+    return instance.post("/user/login");
+  };
+
+  return useMutation(response, {
+    onError: (e) => console.log(e),
+    onSuccess: () => alert("환영합니다."),
+  });
+};
 
 export const useSignupMutation = () => {
   const response = async (param) => {
