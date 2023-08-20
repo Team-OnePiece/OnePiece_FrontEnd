@@ -87,6 +87,7 @@ const LogoContainer = styled.div`
 const MyPageTxT = styled.span`
   display: flex;
   justify-content: center;
+  flex-direction: column;
   position: relative;
   right: 300px;
   bottom: 30px;
@@ -138,7 +139,7 @@ const BottomBtnContainer = styled.div`
   align-items: center;
   /* margin-top: 100px; */
   position: relative;
-  top: 50px;
+  top: 30px;
   gap: 60px;
 `;
 

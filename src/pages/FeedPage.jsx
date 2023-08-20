@@ -76,11 +76,16 @@ const FeedPage = () => {
             </p>
           </InputContainer>
           <p>태그는 최대 6개, 최대 10자까지 작성 가능합니다.</p>
-          <TagAddButton>+</TagAddButton>
+          <InputContainer>
+            <Input onChange={onInputHandler} maxLength="10" />
+            <p>
+              <span>{inputCount}</span>
+              <span>/10</span>
+            </p>
+          </InputContainer>
+          {/* <TagAddButton>+</TagAddButton> */}
         </ContentContainer>
         <UploadContainer>
-          <p>어느 그룹에 업로드 하시겠습니까?</p>
-          <Group>그룹선택</Group>
           <BottomBtnContainer>
             <CancelBtn>취소하기</CancelBtn>
             <UploadBtn>업로드</UploadBtn>
@@ -148,16 +153,16 @@ const ContentContainer = styled.div`
   }
 `;
 
-const TagAddButton = styled.button`
-  width: 60px;
-  height: 50px;
-  border-radius: 24px;
-  border: 1px solid;
-  border-color: rgb(239, 204, 202);
-  color: black;
-  font-size: 20px;
-  background-color: white;
-`;
+// const TagAddButton = styled.button`
+//   width: 60px;
+//   height: 30px;
+//   border-radius: 24px;
+//   border: 1px solid;
+//   border-color: rgb(239, 204, 202);
+//   color: black;
+//   font-size: 20px;
+//   background-color: white;
+// `;
 
 const UploadContainer = styled.div`
   display: flex;
@@ -170,6 +175,7 @@ const UploadContainer = styled.div`
 
 const InputContainer = styled.div`
   position: relative;
+  top: 30px;
   > p {
     position: absolute;
     top: 12px;
@@ -178,19 +184,9 @@ const InputContainer = styled.div`
   }
 `;
 
-const Group = styled.button`
-  border: 1px solid;
-  border-color: rgb(239, 204, 202);
-  color: gray;
-  border-radius: 24px;
-  width: 120px;
-  height: 40px;
-  font-size: 22px;
-  background-color: white;
-`;
-
 const BottomBtnContainer = styled.div`
   display: flex;
+  padding-top: 70px;
   justify-content: space-between;
 `;
 
