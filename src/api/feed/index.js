@@ -8,8 +8,8 @@ export const useFeedDelete = () => {
   };
 
   return useMutation(response, {
-    onError: () => alert("게시글 삭제에 실패하였습니다."),
-    onSuccess: () => alert("게시글 삭제에 성공하였습니다."),
+    onError: () => {},
+    onSuccess: () => {},
   });
 };
 
